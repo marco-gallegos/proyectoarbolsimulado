@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1494301199 source:c:\users\admin\desktop\proyectoarbolsimulado\main.cpp
+	<iostream>
+	<cstring>
+	<fstream>
+	<stdlib.h>
+	<algorithm>
+	<sstream>
+	<list>
+

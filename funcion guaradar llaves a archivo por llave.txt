@@ -1,0 +1,63 @@
+void Lista :: PasarA(Nodo *ptr)
+{
+
+    //ifstream leer("Index.txt", ios::in);
+    ofstream temporal("Temporal.txt",ios::app);
+
+    if(ptr==NULL)
+    {
+        return;
+    }
+
+    else
+    {
+        if(ptr->anterior!=NULL)
+        {
+            PasarA(ptr->anterior);
+        }
+
+        temporal<<"NRR    LLAVE    H.IZQ    H.DER\n"<<ptr->u.nrr<<"\t"<<generarllave(ptr->u)<<"\t";
+
+
+        if(ptr->anterior==NULL && ptr->siguiente==NULL )
+        {
+            temporal<<"-1"<<"\t";
+            temporal<<"-1";
+        }
+        else
+        {
+            if(ptr->anterior!=NULL)
+            {
+                temporal<<ptr->anterior->u.nrr<<"\t";
+            }
+            else
+            {
+                temporal<<"-1"<<"\t";
+            }
+
+            if(ptr->siguiente!=NULL)
+            {
+                temporal<<" "<<ptr->siguiente->u.nrr;
+            }
+
+            else
+            {
+                temporal<<"-1"<<"\t";
+            }
+        }
+
+        if(ptr->siguiente!=NULL)
+        {
+            PasarA(ptr->siguiente);
+
+        }
+         temporal<<"\n";
+
+    }
+
+    //leer.close();
+    temporal.close();
+
+    remove("Index.txt");
+    rename("Temporal.txt","Index.txt");
+}
